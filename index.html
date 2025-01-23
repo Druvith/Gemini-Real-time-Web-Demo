@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Gemini Real-Time Audio Demo</title>
+  <style>
+    .controls-panel {
+      margin: 20px 0;
+      padding: 10px;
+      background: #f5f5f5;
+      border-radius: 4px;
+    }
+    .volume-control {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .keyboard-hints {
+      font-size: 0.8em;
+      color: #666;
+      margin-top: 5px;
+    }
+    
+    /* Add visual feedback styles */
+    button.active,
+    button.recording {
+      background-color: #ff4444;
+      color: white;
+    }
+    
+    #muteBtn.muted {
+      background-color: #666;
+      color: white;
+    }
+    
+    /* Improve volume slider appearance */
+    input[type="range"] {
+      width: 150px;
+      height: 20px;
+      margin: 0 10px;
+    }
+    
+    /* Make buttons more visible */
+    button {
+      padding: 8px 16px;
+      margin: 4px;
+      border-radius: 4px;
+      border: 1px solid #ccc;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    
+    button:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+  </style>
+</head>
+<body>
+  <h1>Gemini Real-Time Audio Demo (16kHz in, 24kHz out)</h1>
+  <p>Please use headphones to avoid audio feedback.</p>
+
+  <button id="startBtn">Start Recording</button>
+  <button id="stopBtn" disabled>Stop Recording</button>
+  <br/><br/>
+
+  <label>Text Input:</label>
+  <input type="text" id="textInput"/>
+  <button id="sendTextBtn">Send</button>
+  <br/><br/>
+
+  <div class="controls-panel">
+    <div class="volume-control">
+      <button id="muteBtn">🔊</button>
+      <input type="range" id="volumeSlider" min="0" max="100" value="100">
+      <span id="volumeLabel">100%</span>
+    </div>
+    <div class="keyboard-hints">
+      Shortcuts: [Space] Push-to-talk | [Enter] Send message | [Esc] Stop recording
+    </div>
+  </div>
+
+  <div id="status">Status: Disconnected</div>
+  <div id="log" style="border:1px solid #ccc; width:80%; height:200px; overflow:auto;"></div>
+
+  <script>
+    // Verify script loading
+    window.addEventListener('error', function(e) {
+      console.error('Script error:', e);
+      document.getElementById('status').textContent = 
+        'Error: ' + (e.target.src ? 'Failed to load ' + e.target.src : e.message);
+    });
+  </script>
+  <script src="/static/main.js"></script>
+</body>
+</html>
