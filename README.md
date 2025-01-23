@@ -50,9 +50,9 @@ This implementation converts Google's original CLI-based demo into a web applica
    GOOGLE_API_KEY=your_api_key_here
    ```
 
-5. Run the server:
+5. Run the web app:
    ```bash
-   python backend.py
+   uvicorn backend:app --reload
    ```
 
 6. Open your browser and navigate to:
