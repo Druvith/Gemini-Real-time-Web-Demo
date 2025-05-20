@@ -10,14 +10,18 @@ This implementation converts Google's original CLI-based demo into a web applica
 - Push-to-talk functionality
 - Volume controls and mute options
 
+The file `app.py` contains the original CLI-based demo, which provided the foundational logic for capturing and streaming audio and video. This was then adapted into the current web application structure, primarily managed by `backend.py`.
+
 ## Technical Architecture
 
 ### Frontend
+- **Key Files:** `index.html`, `static/main.js`, `static/audio-processor.js`, `static/playback-processor.js`
 - Web Audio API for audio capture and playback
 - AudioWorklet for sample rate conversion and streaming
 - WebSocket for real-time communication
 
 ### Backend
+- **Key File:** `backend.py`
 - FastAPI server handling WebSocket connections
 - Integration with Gemini's real-time API
 - Audio format conversion and streaming
